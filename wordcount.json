@@ -1,0 +1,45 @@
+[
+    {
+        "name": "wordcount-mapper",
+        "exec": {
+            "path": "file://python:python",
+            "env": {
+                "PYTHONHOME": "/"
+            }
+        },
+        "file_list": [
+            {
+                "device": "stdin",
+                "path": "swift://AUTH_a19b81a0-c78b-4e51-b383-bf4fc127ad38/wordcount/wordcount-mapper.py"
+            },
+            {
+                "device": "python"
+            },
+            {
+                "device": "input",
+                "path": "swift://AUTH_a19b81a0-c78b-4e51-b383-bf4fc127ad38/gutenberg/5*"
+            }
+        ],
+        "connect": ["wordcount-reducer"],
+        "replicate": 1
+    },
+    {
+        "name": "wordcount-reducer",
+        "exec": {
+            "path": "file://python:python"
+        },
+        "file_list": [
+            {
+                "device": "stdin",
+                "path": "swift://AUTH_a19b81a0-c78b-4e51-b383-bf4fc127ad38/wordcount/wordcount-reducer.py"
+            },
+            {
+                "device": "python"
+            },
+            {
+                "device": "stdout"
+            }
+        ],
+        "replicate": 1
+    }
+]
